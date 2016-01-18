@@ -1,0 +1,155 @@
+<!--默认全局模板框架-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="<%= siteConfig.cmsDescription %>">
+    <meta content="<%= siteConfig.keywords %>" name="keywords"/>
+    <meta name="author" content="DoraCMS">
+    <title><%= siteConfig.title %></title>
+
+    <link href="/themes/css/bootstrap.min.css?vesion=<%= siteConfig.version %>" rel="stylesheet">
+    <!--<link rel="stylesheet" href="/plugins/font-awesome/css/font-awesome.min.css">-->
+
+    <!-- Stylesheets -->
+    <link href="/themes/css/fontello.css" rel="stylesheet" type="text/css">
+    <link href="/themes/css/flexslider.css" rel="stylesheet" type="text/css">
+    <link href="/themes/js/revolution-slider/css/settings.css" rel="stylesheet" type="text/css"
+          media="screen"/>
+    <link href="/themes/css/owl.carousel.css" rel="stylesheet" type="text/css">
+    <link href="/themes/css/responsive-calendar.css" rel="stylesheet" type="text/css">
+    <link href="/themes/css/chosen.css" rel="stylesheet" type="text/css">
+    <link href="/themes/css/cloud-zoom.css" rel="stylesheet" type="text/css"/>
+    <link href="/themes/css/style.css?vesion=<%= siteConfig.version %>" rel="stylesheet"
+          type="text/css">
+
+
+    <!--以下脚本为百度统计，可以删除-->
+    <!--<script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?00bedeafedf2236ccbe9706d3a9e09b3";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>-->
+
+    <style type="text/css">
+        .no-fouc {
+            display: none;
+        }
+    </style>
+
+    <script src="/themes/js/jquery-1.11.0.min.js?vesion=<%= siteConfig.version %>" type="text/javascript"></script>
+    <!-- jQuery -->
+    <script src="/themes/js/jquery-ui-1.10.4.min.js"></script>
+
+    <!-- Preloader -->
+    <script src="/themes/js/jquery.queryloader2.min.js"></script>
+
+    <script type="text/javascript">
+        $('html').addClass('no-fouc');
+
+        $(document).ready(function () {
+
+            $('html').show();
+
+            var window_w = $(window).width();
+            var window_h = $(window).height();
+            var window_s = $(window).scrollTop();
+
+            $("body").queryLoader2({
+                backgroundColor: '#f2f4f9',
+                barColor: '#63b2f5',
+                barHeight: 4,
+                percentage: false,
+                deepSearch: true,
+                minimumTime: 1000,
+                onComplete: function () {
+
+                    $('.animate-onscroll').filter(function (index) {
+
+                        return this.offsetTop < (window_s + window_h);
+
+                    }).each(function (index, value) {
+
+                        var el = $(this);
+                        var el_y = $(this).offset().top;
+
+                        if ((window_s) > el_y) {
+                            $(el).addClass('animated fadeInDown').removeClass('animate-onscroll');
+                            setTimeout(function () {
+                                $(el).css('opacity', '1').removeClass('animated fadeInDown');
+                            }, 2000);
+                        }
+
+                    });
+
+                }
+            });
+
+        });
+    </script>
+
+
+</head>
+
+<body class="sticky-header-on tablet-sticky-header">
+<div class="container">
+    <%- include header %>
+    <%- body %>
+    <%- include footer %>
+</div>
+
+
+<script src="/themes/js/bootstrap.min.js?vesion=<%= siteConfig.version %>" type="text/javascript"></script>
+
+<!-- Modernizr -->
+<script type="text/javascript" src="/themes/js/modernizr.js"></script>
+
+<!-- Sliders/Carousels -->
+<script type="text/javascript" src="/themes/js/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="/themes/js/owl.carousel.min.js"></script>
+
+<!-- Revolution Slider  -->
+<script type="text/javascript"
+        src="/themes/js/revolution-slider/js/jquery.themepunch.plugins.min.js"></script>
+<script type="text/javascript"
+        src="/themes/js/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+
+<!-- Calendar -->
+<script type="text/javascript" src="/themes/js/responsive-calendar.min.js"></script>
+
+<!-- Raty -->
+<script type="text/javascript" src="/themes/js/jquery.raty.min.js"></script>
+
+<!-- Chosen -->
+<script type="text/javascript" src="/themes/js/chosen.jquery.min.js"></script>
+
+<!-- jFlickrFeed -->
+<script type="text/javascript" src="/themes/js/jflickrfeed.min.js"></script>
+
+<!-- InstaFeed -->
+<script type="text/javascript" src="/themes/js/instafeed.min.js"></script>
+
+
+<!-- MixItUp -->
+<script type="text/javascript" src="/themes/js/jquery.mixitup.js"></script>
+
+<!-- CloudZoom -->
+<script type="text/javascript" src="/themes/js/zoomsl-3.0.min.js"></script>
+
+<!-- Main Script -->
+<script type="text/javascript" src="/themes/js/script.js"></script>
+
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/themes/js/jquery.placeholder.js"></script>
+<script type="text/javascript" src="/themes/js/script_ie.js"></script>
+
+</body>
+<![endif]-->
+</html>
