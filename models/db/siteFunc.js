@@ -391,7 +391,7 @@ var siteFunc = {
         if (type == 'index') {
             targetPath = settings.SYSTEMTEMPFORDER + '/index';
             res.render(targetPath, siteFunc.setDataForIndex(req, res, {
-                'type': 'content',
+               /* 'type': 'content',*/
                 'state': true
             }, defaultTempPath));
         } else if (type == 'sitemap') {

@@ -21,9 +21,7 @@ var url = require('url');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-
     siteFunc.renderToTargetPageByType(req, res, 'index');
-
 });
 
 router.get('/content', function (req, res, next) {
