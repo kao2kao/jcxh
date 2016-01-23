@@ -26,6 +26,20 @@ router.get('/', function (req, res, next) {
 
 });
 
+router.get('/content', function (req, res, next) {
+
+    siteFunc.renderToTargetPageByType(req, res, 'content');
+
+});
+//协会详情
+router.get('/orgdetail', function (req, res, next) {
+    siteFunc.renderToTargetPageByType(req, res, 'orgDetail');
+});
+//组织架构
+router.get('/orgleader', function (req, res, next) {
+    siteFunc.renderToTargetPageByType(req, res, 'orgLeader');
+});
+
 //缓存站点地图
 router.get("/sitemap.html", function (req, res, next) {
     var siteMapNeedData;
@@ -44,55 +58,6 @@ router.get("/sitemap.html", function (req, res, next) {
             })
         }
     });
-});
-
-
-//文档详情页面
-router.get('/details/:url', function (req, res, next) {
-
-    var url = req.params.url;
-    var currentId = url.split('.')[0];
-    if (shortid.isValid(currentId)) {
-        Content.findOne({
-            '_id': currentId,
-            'state': true
-        }).populate('category').populate('author').exec(function (err, result) {
-            if (err) {
-                console.log(err)
-            } else {
-                if (result) {
-//                更新访问量
-                    result.clickNum = result.clickNum + 1;
-                    result.save(function () {
-                        var cateParentId = result.sortPath.split(',')[1];
-                        var cateQuery = {'sortPath': {$regex: new RegExp(cateParentId, 'i')}};
-
-                        siteFunc.getContentsCount(req, res, cateParentId, cateQuery, function (count) {
-                            siteFunc.renderToTargetPageByType(req, res, 'detail', {
-                                count: count,
-                                cateQuery: cateQuery,
-                                detail: result
-                            });
-                        });
-
-                    })
-                } else {
-                    siteFunc.renderToTargetPageByType(req, res, 'error', {
-                        info: '非法操作!',
-                        message: settings.system_illegal_param,
-                        page: 'do404'
-                    });
-                }
-            }
-        });
-    } else {
-        siteFunc.renderToTargetPageByType(req, res, 'error', {
-            info: '非法操作!',
-            message: settings.system_illegal_param,
-            page: 'do500'
-        });
-    }
-
 });
 
 

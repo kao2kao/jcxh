@@ -199,20 +199,14 @@ var siteFunc = {
     },
 
     setDetailInfo: function (req, res, params, defaultTempPath) {
-        var currentCateList = ContentCategory.find(params.cateQuery).sort({'sortId': 1});
+        // var currentCateList = ContentCategory.find(params.cateQuery).sort({'sortId': 1});
         //var tagsData = DbOpt.getDatasByParam(ContentTags, req, res, {});
         return {
-            siteConfig: this.siteInfos(params.detail.title, params.detail.discription, params.detail.keywords),
-            cateTypes: this.getCategoryList(),
-            currentCateList: currentCateList,
-            hotItemListData: this.getHotItemListData({}),
-            newItemListData: this.getNewItemListData({}),
-            friendLinkData: this.getFriendLink(),
-            reCommendListData: this.getRecommendListData(params.cateQuery, params.count),
-            documentInfo: params.detail,
-            messageList: this.getMessageList(params.detail._id),
+            siteConfig: this.siteInfos("详情"),
+            //siteConfig: this.siteInfos(params.detail.title, params.detail.discription, params.detail.keywords),
+            //documentInfo: params.detail,
+            //messageList: this.getMessageList(params.detail._id),
             pageType: 'detail',
-            logined: isLogined(req),
             layout: defaultTempPath
         }
     },
@@ -404,42 +398,15 @@ var siteFunc = {
             targetPath = settings.SYSTEMTEMPFORDER + '/sitemap';
             res.render(targetPath, siteFunc.setDataForHtmlSiteMap(req, res, params, defaultTempPath));
         } else if (type == 'contentList') {
-            if (params.result.contentTemp) {
-                targetPath = settings.SYSTEMTEMPFORDER + '/' + params.result.contentTemp.forder + '/contentList';
-            } else {
-                targetPath = settings.SYSTEMTEMPFORDER + '/' + siteFunc.getDefaultTempItem(temp) + '/contentList';
-            }
+            targetPath = settings.SYSTEMTEMPFORDER + '/contentList';
             res.render(targetPath, siteFunc.setDataForCate(req, res, params, defaultTempPath));
-        } else if (type == 'detail') {
-            if (params.detail.category.contentTemp) {
-                var targetForder = siteFunc.getTempItemById(temp, params.detail.category.contentTemp);
-                targetPath = settings.SYSTEMTEMPFORDER + '/' + targetForder + '/detail';
-            } else {
-                targetPath = settings.SYSTEMTEMPFORDER + '/' + siteFunc.getDefaultTempItem(temp) + '/detail';
-            }
-            res.render(targetPath, siteFunc.setDetailInfo(req, res, params, defaultTempPath));
-        } else if (type == 'user') {
-            targetPath = settings.SYSTEMTEMPFORDER + '/users/' + params.page;
-            res.render(targetPath, siteFunc.setDataForUser(req, res, params, defaultTempPath));
-        } else if (type == 'userNotice') {
-            targetPath = settings.SYSTEMTEMPFORDER + '/users/' + params.page;
-            res.render(targetPath, siteFunc.setDataForUserNotice(req, res, params, defaultTempPath));
-        } else if (type == 'userInfo') {
-            targetPath = settings.SYSTEMTEMPFORDER + '/users/' + params.page;
-            res.render(targetPath, siteFunc.setDataForInfo(params, defaultTempPath));
-        } else if (type == 'userReply') {
-            targetPath = settings.SYSTEMTEMPFORDER + '/users/' + params.page;
-            res.render(targetPath, siteFunc.setDataForUserReply(req, res, params, defaultTempPath));
-        } else if (type == 'search') {
-            targetPath = settings.SYSTEMTEMPFORDER + '/public/' + params.page;
-            res.render(targetPath, siteFunc.setDataForSearch(req, res, params, defaultTempPath));
         } else if (type == 'error') {
             targetPath = settings.SYSTEMTEMPFORDER + '/public/' + params.page;
             res.render(targetPath, siteFunc.setDataForError(req, res, params, defaultTempPath));
+        } else {
+            targetPath = settings.SYSTEMTEMPFORDER + type;
+            res.render(targetPath, siteFunc.setDetailInfo(req, res, params, defaultTempPath));
         }
-
-
     }
-
 };
 module.exports = siteFunc;
