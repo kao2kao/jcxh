@@ -71,6 +71,8 @@ var DbOpt = {
         if (shortid.isValid(targetId)) {
             var conditions = {_id: targetId};
             req.body.updateDate = new Date();
+            //删除属性'id',不允许更新id：
+            delete  req.body._id;
             var update = {$set: req.body};
             obj.update(conditions, update, function (err, result) {
                 if (err) {

@@ -5,7 +5,7 @@
         <div class="post-list">
             <% if(documentList.length > 0){ %>
             <% documentList.forEach(function(item){ %>
-            <article class="post">
+            <article class="post list">
                 <div class="row">
                     <div class="col-xs-3 col-md-3">
                         <% if(item.isTop == 1){ %>
@@ -14,10 +14,15 @@
                         <img src="<%= item.sImg %>" class="img-responsive" alt="<%= item.title %>"/>
                     </div>
                     <div class="col-xs-9 col-md-9">
-                        <h2 class="post-title">
+                        <h4 class="post-title">
                             <a href="/details/<%= item._id %>.html"
                                target="_blank"><%- searchKeyWord(item.title, pageInfo.searchKey) %></a>
-                        </h2>
+                        </h4>
+                        <!--<ul class="post-meta">
+                            <li><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;<%=myDateFormat(item.date)%></li>
+                            <li> <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;阅读(<%=item.clickNum%>)</li>
+                            <li> <i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp;评论(<%=item.commentNum%>)</li>
+                        </ul>-->
                         <div class="post-content"><%- searchKeyWord(item.discription, pageInfo.searchKey) %></div>
                     </div>
                 </div>

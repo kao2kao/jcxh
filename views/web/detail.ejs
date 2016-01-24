@@ -1,8 +1,7 @@
-<!--协会介绍 -->
-<section id="content">
+<div class="container">
     <div class="row">
-        <div class="col-lg-9 col-md-9 col-sm-8">
-            <div class="post-content sidebar-box white animate-onscroll">
+        <div class="col-md-12">
+            <div class="col-md-9 left-frame">
                 <article class="post">
                     <h2 class="post-title"><%=documentInfo.title%>
                         <%if(documentInfo.from == '2'){%>
@@ -13,17 +12,11 @@
                         <li><%=myDateFormat(documentInfo.date)%>&nbsp;/&nbsp;<%=documentInfo.clickNum%> 次浏览</li>
                         <li class="comment-count"><a title="<%=documentInfo.title%> 上的评论" href="#"><%=documentInfo.commentNum%> 条评论</a></li>
                     </ul>
-                    <div style="text-align: center">
-                        <img src="<%=documentInfo.sImg%>">
-
-                    </div>
                     <div class="post-content"><%- documentInfo.comments%></div>
                 </article>
 
             </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-4 sidebar">
-            <%- include hotNews.ejs %>
+
         </div>
     </div>
-</section>
+</div>

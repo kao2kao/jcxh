@@ -73,7 +73,7 @@ $(document).ready(function(){
 	
 	enableOwlCarousel(); // Owl Carousel
 	
-	enableRevolutionSlider(); // Revolution Slider
+	//enableRevolutionSlider(); // Revolution Slider
 	
 	
 	
@@ -293,37 +293,7 @@ $(document).ready(function(){
 	
 	
 	
-	
-	
-	/* Revolution Slider */
-	function enableRevolutionSlider(){
-		
-		/* Revolution Slider */
-		$('.tp-banner').not('.full-width-revolution').revolution({
-			delay:9000,
-			startwidth:1170,
-			startheight:500,
-			hideThumbs:10,
-			navigationType:"none"
-		});
-		
-		/* Revolution Slider Fullwidth */
-		$('.tp-banner.full-width-revolution').revolution({
-			delay:9000,
-			startwidth:1170,
-			startheight:500,
-			hideThumbs:10,
-			navigationType:"none",
-			fullWidth:"on",
-			forceFullWidth:"on"
-		});
-		
-	}
-	
-	
-	
-	
-	
+
 	
 	
 	/* Owl Carousel */

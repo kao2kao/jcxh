@@ -204,8 +204,16 @@ var siteFunc = {
         return {
             siteConfig: this.siteInfos("详情"),
             //siteConfig: this.siteInfos(params.detail.title, params.detail.discription, params.detail.keywords),
-            //documentInfo: params.detail,
+            documentInfo: params.detail,
             //messageList: this.getMessageList(params.detail._id),
+            pageType: 'detail',
+            layout: defaultTempPath
+        }
+    },
+
+    setDirectEjs: function (req, res, params, defaultTempPath) {
+         return {
+            siteConfig: this.siteInfos("详情"),
             pageType: 'detail',
             layout: defaultTempPath
         }
@@ -388,24 +396,21 @@ var siteFunc = {
     renderToTargetPageByType: function (req, res, type, params) {
 
         var defaultTempPath = settings.SYSTEMTEMPFORDER + '/public/defaultTemp';
+        var targetPath = settings.SYSTEMTEMPFORDER + type;
         if (type == 'index') {
-            targetPath = settings.SYSTEMTEMPFORDER + '/index';
             res.render(targetPath, siteFunc.setDataForIndex(req, res, {
                /* 'type': 'content',*/
                 'state': true
             }, defaultTempPath));
         } else if (type == 'sitemap') {
-            targetPath = settings.SYSTEMTEMPFORDER + '/sitemap';
             res.render(targetPath, siteFunc.setDataForHtmlSiteMap(req, res, params, defaultTempPath));
-        } else if (type == 'contentList') {
-            targetPath = settings.SYSTEMTEMPFORDER + '/contentList';
-            res.render(targetPath, siteFunc.setDataForCate(req, res, params, defaultTempPath));
         } else if (type == 'error') {
             targetPath = settings.SYSTEMTEMPFORDER + '/public/' + params.page;
             res.render(targetPath, siteFunc.setDataForError(req, res, params, defaultTempPath));
-        } else {
-            targetPath = settings.SYSTEMTEMPFORDER + type;
+        } else if (type == 'newsDetail') {
             res.render(targetPath, siteFunc.setDetailInfo(req, res, params, defaultTempPath));
+        }else{
+            res.render(targetPath, siteFunc.setDirectEjs(req, res, params, defaultTempPath));
         }
     }
 };

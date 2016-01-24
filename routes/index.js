@@ -29,6 +29,31 @@ router.get('/content', function (req, res, next) {
     siteFunc.renderToTargetPageByType(req, res, 'content');
 
 });
+
+router.get('/details/:url', function (req, res, next) {
+
+    var url = req.params.url;
+    var currentId = url.split('.')[0];
+    if (shortid.isValid(currentId)) {
+        Content.findOne({
+            '_id': currentId,
+            'state': true
+        }).populate('category').populate('author').exec(function (err, result) {
+            siteFunc.renderToTargetPageByType(req, res, 'newsDetail', {
+                detail: result
+            });
+        });
+    } else {
+        siteFunc.renderToTargetPageByType(req, res, 'error', {
+            info: '非法操作!',
+            message: settings.system_illegal_param,
+            page: 'do500'
+        });
+    }
+
+});
+
+
 //协会详情
 router.get('/orgdetail', function (req, res, next) {
     siteFunc.renderToTargetPageByType(req, res, 'orgDetail');

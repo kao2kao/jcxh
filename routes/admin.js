@@ -1001,7 +1001,6 @@ var returnAdminRouter = function(io) {
                             res.end('您已安装该模板');
                             return;
                         }
-
                         var realType = system.getFileMimeType(target_path);
                         if(realType.fileType != 'zip'){
                             fs.unlinkSync(target_path);

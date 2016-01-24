@@ -465,7 +465,7 @@ doraApp.controller("addContent",['$scope','$http','pageData','getItemService',fu
             message : '上传成功',
             type : 'success' ,
             callBack : function(){
-                $("#myImg").attr("src",data);
+                $("#myImg").attr("href",data);
                 $scope.formData.sImg = data;
             }
         });
@@ -478,7 +478,7 @@ doraApp.controller("addContent",['$scope','$http','pageData','getItemService',fu
             $scope.formData = result;
             initTreeDataByType($scope,$http,"contentCategories");
             initContentTags($scope,$http);
-            $("#myImg").attr("src",$scope.formData.sImg)
+            $("#myImg").attr("href",data);
         })
     }
     // 添加或修改文章
