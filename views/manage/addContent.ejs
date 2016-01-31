@@ -61,10 +61,24 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-3">缩略图</label>
+                        <label class="control-label col-sm-3">主页缩略图</label>
                         <div class="col-sm-3">
-                            <input type="file" name="uploadify" id="uploadContentImg" />
-                            <a id="myImg" href="" target="_blank">查看上传文件</a>
+                            <input type="file" name="uploadify" id="uploadContentSImg" />
+                            <image src="" alt="" width="120" height="120" class="img-thumbnail" id="myImg"></image>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">详情轮播图</label>
+                        <div class="col-sm-3">
+                            <input type="file" name="uploadify" id="uploadContentLImg" />
+                            <div ng-repeat='img in formData.lImgs'>
+                                <image src="{{img}}" alt="" width="120" height="120" class="img-thumbnail"></image>
+                                <image src="/stylesheets/backstage/img/action_delete.ico" alt="删除" ng-click="deleteLImage(img)"></image>
+                            </div>
+
+
+
+                            <!--<a id="myImg" href="" target="_blank">查看上传文件</a>-->
                             <!--<a src="" alt="" width="120" height="120" class="img-thumbnail" id="myImg">-->
                         </div>
                     </div>

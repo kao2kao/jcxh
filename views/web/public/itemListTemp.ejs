@@ -11,7 +11,10 @@ item为子元素集合
                 <%if(item.isTop == 1){%>
                     <span class="span-mark">荐</span>
                 <%}%>
-				<img src="<%=item.sImg%>" class="img-responsive" alt="<%=item.title%>"/>
+				<%-splitStr(item.lImg).forEach(function(img){%>
+				<img src="<%=img%>" class="img-responsive"/>
+				<%})%>
+
 			</div>
 			<div class="col-xs-9 col-md-9">
 				<h2 class="post-title">

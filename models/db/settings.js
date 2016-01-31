@@ -26,7 +26,7 @@ module.exports = {
 
 //    站点基础信息配置
     SITETITLE : '克拉玛依家居建材行业协会', // 站点名称
-    SITEDOMAIN : 'http://www.html-js.cn', // 站点域名
+    SITEDOMAIN : 'http://www.klmyjcxh.com', // 站点域名
     SITEICP : '京ICP备15038960号-2', // 站点备案号
     SITEVERSION : 'v1.1.0', // 静态资源版本戳
     SYSTEMMAIL : '330996818@qq.com', // 管理员个人邮箱
@@ -53,14 +53,15 @@ module.exports = {
 
 
     CONTENTMANAGE : new Array('contentManage','内容管理'), // 后台模块(内容管理)
-    CONTENTLIST : new Array('contentManage_content','文档管理'),
+    CONTENTLIST : new Array('contentManage_content','协会动态管理'),
+    SUBORGLIST : new Array('contentManage_subOrg','分协会管理'),
     CONTENTCATEGORYS : new Array('contentManage_cateGory','文档类别管理'),
     CONTENTTAGS : new Array('contentManage_tag','文档标签管理'), //标签管理
     CONTENTTEMPS : new Array('contentManage_temp','文档模板管理'), //模板管理
     CONTENTTEMPSCONFIG : new Array('contentManage_temp_1','模板配置'), //模板管理
     CONTENTTEMPSEDIT : new Array('contentManage_temp_2','模板编辑'), //模板管理
     CONTENTTEMPITEMS : new Array('contentManage_tpItem','文档模板单元管理'), //模板单元管理
-    MESSAGEMANAGE : new Array('contentManage_msg','留言管理'), // 留言管理
+    /*MESSAGEMANAGE : new Array('contentManage_msg','留言管理'), // 留言管理*/
     NOTICEMANAGE : new Array('contentManage_notice','消息管理'), // 消息管理
     SYSTEMNOTICE : new Array('contentManage_notice_1','公告管理'), // 公告管理
     USERNOTICE : new Array('contentManage_notice_2','用户消息'), // 用户消息

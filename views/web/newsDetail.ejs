@@ -4,20 +4,30 @@
         <div class="col-lg-9 col-md-9 col-sm-8">
             <div class="post-content sidebar-box white animate-onscroll">
                 <article class="post">
-                    <h2 class="post-title"><%=documentInfo.title%>
-                        <%if(documentInfo.from == '2'){%>
+                    <h2 class="post-title"><%= documentInfo.title %>
+                        <% if(documentInfo.from == '2'){ %>
                         &nbsp;<span class="badge">转</span>
-                        <%}%>
+                        <% } %>
                     </h2>
                     <ul class="post-meta">
-                        <li><%=myDateFormat(documentInfo.date)%>&nbsp;/&nbsp;<%=documentInfo.clickNum%> 次浏览</li>
-                        <li class="comment-count"><a title="<%=documentInfo.title%> 上的评论" href="#"><%=documentInfo.commentNum%> 条评论</a></li>
+                        <li><%= myDateFormat(documentInfo.date) %>&nbsp;/&nbsp;<%= documentInfo.clickNum %> 次浏览</li>
                     </ul>
                     <div style="text-align: center">
-                        <img src="<%=documentInfo.sImg%>">
+                        <% if(splitStr(documentInfo.lImg).length > 0){ %>
+                        <!-- Main Slider -->
+                        <div class="flexslider main-flexslider animate-onscroll">
+                            <ul class="slides">
+                                <% splitStr(documentInfo.lImg).forEach(function(img){ %>
+                                <li>
+                                    <img src="<%= img %>"/>
+                                </li>
+                                <% }) %>
+                            </ul>
 
+                        </div>
+                        <% } %>
                     </div>
-                    <div class="post-content"><%- documentInfo.comments%></div>
+                    <div class="post-content"><%- documentInfo.comments %></div>
                 </article>
 
             </div>

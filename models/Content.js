@@ -23,6 +23,7 @@ var ContentSchema = new Schema({
     tags : String, // 标签
     keywords : String,
     sImg : { type: String, default: "/upload/images/defaultImg.jpg" }, // 文章小图
+    lImg : String, // 文章小图
     discription : String,
     date: { type: Date, default: Date.now },
     updateDate: { type: Date, default: Date.now }, // 更新时间

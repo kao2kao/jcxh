@@ -5,6 +5,8 @@ var router = express.Router();
 var DbOpt = require("../models/Dbopt");
 // 文档对象
 var Content = require("../models/Content");
+// 文档对象
+var SubOrg = require("../models/SubOrg");
 //文章类别对象
 var ContentCategory = require("../models/ContentCategory");
 //短id
@@ -61,6 +63,19 @@ router.get('/orgdetail', function (req, res, next) {
 //组织架构
 router.get('/orgleader', function (req, res, next) {
     siteFunc.renderToTargetPageByType(req, res, 'orgLeader');
+});
+//组织架构
+router.get('/subOrg/:url', function (req, res, next) {
+    var url = req.params.url;
+    var code = url.split('.')[0];
+    SubOrg.findOne({
+        'code': code
+    }).exec(function (err, result) {
+        siteFunc.renderToTargetPageByType(req, res, 'subOrg', {
+            detail: result
+        });
+    });
+
 });
 
 //缓存站点地图

@@ -199,20 +199,16 @@ var siteFunc = {
     },
 
     setDetailInfo: function (req, res, params, defaultTempPath) {
-        // var currentCateList = ContentCategory.find(params.cateQuery).sort({'sortId': 1});
-        //var tagsData = DbOpt.getDatasByParam(ContentTags, req, res, {});
         return {
             siteConfig: this.siteInfos("详情"),
-            //siteConfig: this.siteInfos(params.detail.title, params.detail.discription, params.detail.keywords),
             documentInfo: params.detail,
-            //messageList: this.getMessageList(params.detail._id),
             pageType: 'detail',
             layout: defaultTempPath
         }
     },
 
     setDirectEjs: function (req, res, params, defaultTempPath) {
-         return {
+        return {
             siteConfig: this.siteInfos("详情"),
             pageType: 'detail',
             layout: defaultTempPath
@@ -399,7 +395,7 @@ var siteFunc = {
         var targetPath = settings.SYSTEMTEMPFORDER + type;
         if (type == 'index') {
             res.render(targetPath, siteFunc.setDataForIndex(req, res, {
-               /* 'type': 'content',*/
+                /* 'type': 'content',*/
                 'state': true
             }, defaultTempPath));
         } else if (type == 'sitemap') {
@@ -407,9 +403,9 @@ var siteFunc = {
         } else if (type == 'error') {
             targetPath = settings.SYSTEMTEMPFORDER + '/public/' + params.page;
             res.render(targetPath, siteFunc.setDataForError(req, res, params, defaultTempPath));
-        } else if (type == 'newsDetail') {
+        } else if (type == 'newsDetail' || type == 'subOrg') {
             res.render(targetPath, siteFunc.setDetailInfo(req, res, params, defaultTempPath));
-        }else{
+        } else {
             res.render(targetPath, siteFunc.setDirectEjs(req, res, params, defaultTempPath));
         }
     }

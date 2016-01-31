@@ -12,6 +12,8 @@ var AdminUser = require("../AdminUser");
 var AdminGroup = require("../AdminGroup");
 // 文档对象
 var Content = require("../Content");
+//分会对象
+var SubOrg = require("../SubOrg");
 //数据操作日志
 var DataOptionLog = require("../DataOptionLog");
 //文章类别对象
@@ -183,8 +185,8 @@ var adminFunc = {
             targetObj = SystemOptionLog;
         }else if(currentPage.indexOf(settings.CONTENTLIST[0]) >=0 ){
             targetObj = Content;
-        }else if(currentPage.indexOf(settings.CONTENTCATEGORYS[0]) >=0 ){
-            targetObj = ContentCategory;
+        }else if(currentPage.indexOf(settings.SUBORGLIST[0]) >=0 ){
+            targetObj = SubOrg;
         }else if(currentPage.indexOf(settings.CONTENTTAGS[0]) >=0 ){
             targetObj = ContentTags;
         }else if(currentPage.indexOf(settings.MESSAGEMANAGE[0]) >=0 ){

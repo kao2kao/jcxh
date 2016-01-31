@@ -127,6 +127,10 @@ app.locals.searchKeyWord = function (content, key) {
     return newContent;
 };
 
+app.locals.splitStr = function (str) {
+    return str.split(",");
+};
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 /*指定路由控制*/

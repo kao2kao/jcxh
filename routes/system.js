@@ -69,7 +69,7 @@ router.post('/upload', function (req, res, next) {
                             var input = updatePath + newFileName;
                             var out = smallImgPath + newFileName;
                             images(input)                     //加载图像文件
-                                .size(400)                          //等比缩放图像到400像素宽
+                                .size(800)                          //等比缩放图像到400像素宽
                                 .save(out, {               //保存图片到文件,图片质量为50
                                     quality: 80
                                 });

@@ -1,0 +1,46 @@
+<div class="row" ng-controller="addSubOrg">
+    <div class="col-xs-12">
+        <div class="box box-default">
+            <div class="box-header">
+                <div class="alert alert-success alert-dismissable fade in hide" role="alert" id="addSuccess">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <p><i class="icon fa fa-check"></i> <strong>恭喜！</strong>内容添加成功</p>
+                </div>
+                <p class="myInfoBox bg-warning text-warning"><i class="icon fa fa-warning"></i> 信息填写完整无误才可提交</p>
+            </div>
+            <div class="box-body">
+                <form role="form" class="form-horizontal" name="myForm" ng-submit="processForm(myForm.$valid)" novalidate>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">分会名称</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control input-sm" name="title" ng-minlength="4" ng-maxlength="20" ng-model="formData.title" required/>
+                            <label for="inputError" class="control-label text-danger" ng-show="myForm.title.$invalid && !myForm.title.$pristine"><i class="fa fa-times-circle-o"></i> 4-50个非特殊字符</label>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">首字母代码</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control input-sm" name="code" ng-minlength="2" ng-maxlength="20" ng-model="formData.code" required/>
+                            <label for="inputError" class="control-label text-danger" ng-show="myForm.code.$invalid && !myForm.code.$pristine"><i class="fa fa-times-circle-o"></i> 2-10个非特殊字符</label>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">分会详情</label>
+                        <div class="col-sm-8">
+                            <textarea class="" name="comments" ng-model="formData.comments" id="container" ng-minlength="20" placeholder="请输入文章详情" ueditor>{{formData.comments}}</textarea>
+                            <label for="inputError" class="control-label text-danger" ng-show="myForm.comments.$invalid && !myForm.comments.$pristine"><i class="fa fa-times-circle-o"></i>内容不得少于50个字</label>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid">发布</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
